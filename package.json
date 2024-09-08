@@ -1,10 +1,10 @@
 {
   "name": "@rahulkumar300197/fdk-extension-nest",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "FDK Extension NestJS Module",
   "main": "dist/test/index.js",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/@rahulkumar300197"
+    "registry": "https://npm.pkg.github.com/@rahulkumar300197"
   },
   "files": [
     "dist"
