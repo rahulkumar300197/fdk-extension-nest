@@ -20,4 +20,14 @@ jobs:
           scope: '@rahulkumar300197'
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_SECRET}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_SECRET }}
+      - name: package-version
+        run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
+      - name: package-version-to-git-tag
+        uses: pkgdeps/git-tag-action@v2
+        with:
+          github_token: ${{ secrets.NPM_SECRET }}
+          github_repo: ${{ github.repository }}
+          version: ${{ env.PACKAGE_VERSION }}
+          git_commit_sha: ${{ github.sha }}
+          git_tag_prefix: "v"
